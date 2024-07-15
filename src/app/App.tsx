@@ -1,18 +1,11 @@
 import './App.css';
-import React from 'react';
-import StarWarsGallery from './components/starWarsGallery/StarWarsGallery';
 
-
-
-
-
-const App: React.FC = () => {
+function App() {
   return (
-      <div>
-          <StarWarsGallery />
-        
-      </div>
+    <div className="App">
+      <h1>Hello, typescript react ⛵️</h1>
+    </div>
   );
-};
+}
 
 export default App;

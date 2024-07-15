@@ -1,17 +1,15 @@
-import React from 'react';
-import  styles from './starWarsGallery.module.css';
+import styles from "./starWarsGallery.module.css";
+
+import { forceUsers } from "./data";
 import HeroCard from '../heroCard/HeroCard';
-import heroes from '../../data/data';
-
-
-const StarWarsGallery: React.FC = () => {
-    return (
-        <div className={styles.galleryContainer}>
-            {heroes.map((hero, index) => (
-                <HeroCard key={index} {...hero} />
-            ))}
+export default function StarWarsGallery() {
+return (
+    <div className="lesson-container">
+    <div className={styles.forceUsersGrid}>
+        {forceUsers.map((hero, index) => (
+            <HeroCard key={index} age={hero.age} isDark={hero.isDark} name={hero.name} image={hero.image} />
+        ))}
         </div>
-    );
-};
-
-export default StarWarsGallery;
+    </div>
+);
+}

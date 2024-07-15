@@ -1,32 +1,35 @@
-import React from 'react';
 import styles from './heroCard.module.css'
 
-interface HeroCardProps {
-    name: string;
-    age: number;
-    image: string;
-    lightsaberColors: string[];
-    isDark: boolean;
+
+interface IHeroCardProps {
+  name: string;
+  age: number;
+  isDark: boolean;
+  lightsaberColors?: string[];
+  image: string;
+  hasMagic?: boolean
 }
 
-const HeroCard: React.FC<HeroCardProps> = ({ name, age, image, lightsaberColors, isDark }) => {
-    return (
-        <div className={`${styles.heroCard} ${isDark ? styles.dark : styles.light}`}>
-            <h4>{name}</h4>
-            <p>Age: {age}</p>
-            <img width={200} src={image} alt={name} />
-            <p>
-                Lightsaber colors:{" "}
-                {lightsaberColors.map((color, index) => (
-                    <span
-                        key={index}
-                        className={styles.lightsaberColor}
-                        style={{ backgroundColor: color }}
-                    />
-                ))}
-            </p>
-        </div>
-    );
-};
+
+function HeroCard({isDark, age, name, image, lightsaberColors}: IHeroCardProps) {
+  return (
+    // добавляем сразу несколько классов из css module к элементу используя шаблонную строку
+    <div className={`${isDark ? styles.dark : styles.light} ${styles.card}`}>
+      <h4>{name}</h4>
+      <p>Age: {age}</p>
+      <img width={200} src={image} alt="" />
+      <div>
+
+      </div>
+      <p>
+        Lightsaber colors:{" "}
+        {/* знак вопроса перед обращением к свойству объекта проверяет наличие этого свойства и не вызывает ошибку, если его нет */}
+        {lightsaberColors?.map(color => (
+          <span>{color} </span>
+        ))}
+      </p>
+    </div>
+  );
+}
 
 export default HeroCard;
